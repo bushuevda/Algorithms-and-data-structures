@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-# Algorithms-and-data-structures
+# Algorithms and data structures
 =======
 # algorithms-and-data-structures
 
