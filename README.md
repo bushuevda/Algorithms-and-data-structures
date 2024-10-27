@@ -8,7 +8,6 @@
 ### Graphics
 > #### DDA Line
 
-
 ## Structures
-> #### [1. Stack](https://github.com/bushuevda/Algorithms-and-data-structures/edit/main/README.md#stack "Всплывающая подсказка")
+> #### [1. Stack](https://github.com/bushuevda/Algorithms-and-data-structures/blob/main/structures/stack/STACK.md "Всплывающая подсказка")
 
