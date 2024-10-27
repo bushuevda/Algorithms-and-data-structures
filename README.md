@@ -11,5 +11,5 @@
 
 
 ## Structures
-> #### [1. Stack](https://github.com/bushuevda/Algorithms-and-data-structures/blob/main/structures/stack)
+> #### [1. Stack](Algorithms-and-data-structures/structures)
 
