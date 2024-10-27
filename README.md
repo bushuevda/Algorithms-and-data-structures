@@ -1,16 +1,14 @@
 # Algorithms and data structures
+* [Algorithms](#algorithms)
+  * [Graphics](#graphics)
+    * [DDA Line](#dda-line)
+  * [Structures](#structures)
+    * [Stack](#1-stack)
+## Algorithms
+### Graphics
+> #### DDA Line
 
 
-
-***
-
-
-```
-git clone https://gitflic.ru/project/bushuevda/algorithms-and-data-structures.git
-cd algorithms-and-data-structures
-**добавьте первые файлы вашего проекта**
-git add .
-git commit -m "Первый коммит"
-git push -u origin master
-```
+## Structures
+> #### [1. Stack](https://github.com/bushuevda/Algorithms-and-data-structures/edit/main/README.md#stack "Всплывающая подсказка")
 
