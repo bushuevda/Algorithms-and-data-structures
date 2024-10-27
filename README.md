@@ -7,9 +7,9 @@
     
 ## Algorithms
 ### Graphics
-> #### [1. DDA Line](https://github.com/bushuevda/Algorithms-and-data-structures/tree/main/algorithms/graphics/dda_line)
+> #### [1. DDA Line](algorithms/graphics/dda_line)
 
 
 ## Structures
-> #### [1. Stack](structures)
+> #### [1. Stack](structures/stack)
 
