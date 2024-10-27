@@ -11,5 +11,5 @@
 
 
 ## Structures
-> #### [1. Stack](Algorithms-and-data-structures/structures)
+> #### [1. Stack](structures)
 
