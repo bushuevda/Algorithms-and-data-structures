@@ -171,27 +171,23 @@ class BinaryTree:
             print('------------------CASE2')
             if node.right_:
                 node.value_ = node.right_.value_
-                node.right_ = None
+                node.right_ = node.right_.right_
             else:
                 node.value_ = node.left_.value_
-                node.left_ = None
+                node.left_ = node.left_.left_
         
         #case 3 (child left and child right)
         else:
-            print('------------------CASE3')
             # for main node (find max from left)
             if not node.parent_:
                 findMinRight(node)
-                print('------------------CASE3 A')
 
             # find max from left
             elif node.parent_.left_ == node:
                 findMaxLeft(node)
-                print('------------------CASE3 B')
             # find min from right
             elif node.parent_.right_ == node:
                 findMinRight(node)
-                print('------------------CASE3 C')
 
 
 if __name__ == "__main__":
