@@ -18,11 +18,24 @@ class BinaryTree:
         self.queue_: Queue = None
         self.stack_: deque = None
 
-    # A function for inserting value into a tree
+    # Test+ A function for inserting value into a tree
     def insert(self, value):
-        self.find_insert_node(value, self)
+        #Inner function to find node to insert
+        def find_insert_node(value: Union[int, float], parent) -> None: 
+            if value < parent.value_:
+                if parent.left_ is None:
+                    parent.left_ = BinaryTree(value, parent)
+                else:
+                    find_insert_node(value, parent.left_)
+            elif value > parent.value_:
+                if parent.right_ is None:
+                    parent.right_ = BinaryTree(value, parent)
+                else:
+                    find_insert_node(value, parent.right_)
+        
+        find_insert_node(value, self)
 
-    # A function to search node to insert value
+    # Test+ A function to search node to insert value
     def find_insert_node(self, value: Union[int, float], parent) -> None: 
         if value < parent.value_:
             if parent.left_ is None:
@@ -35,7 +48,7 @@ class BinaryTree:
             else:
                 self.find_insert_node(value, parent.right_)
     
-    # Test+ Traversal using ыефсл (Direct Traversal (Preorder): main node -> left node -> right node)
+    # Test+ Traversal using stack (Direct Traversal (Preorder): main node -> left node -> right node)
     def traversal_preorder_stack(self):
         self.stack_ = deque()
         self.stack_.append(self)
@@ -52,40 +65,46 @@ class BinaryTree:
    
     # Test+ Traversal using recursion (Direct Traversal (Preorder): main node -> left node-> right node)
     def traversal_preorder_recursive(self, node, array_traversal = None):
-        
         if node != None:
             if array_traversal != None:
                 array_traversal.append(node.value_)
-            #print(f'node = {node.value_}')
             self.traversal_preorder_recursive(node.left_, array_traversal)
             self.traversal_preorder_recursive(node.right_, array_traversal)
         return array_traversal
 
-    # Traversal using recursion (Reverse bypass (Postorder))
-    def traversal_postorder_recursive(self, node, ):
+    # Test+ Traversal using recursion (Reverse bypass (Postorder))
+    def traversal_postorder_recursive(self, node, array_traversal = None):
         if node != None:
-            self.traversal_postorder_recursive(node.left_)
-            self.traversal_postorder_recursive(node.right_)
-            print(f'node = {node.value_}')
+            self.traversal_postorder_recursive(node.left_, array_traversal)
+            self.traversal_postorder_recursive(node.right_, array_traversal)
+            if array_traversal != None:
+                array_traversal.append(node.value_)
+        return array_traversal
 
-    # Traversal using recursion (Centered bypass (Inorder))
-    def traversal_inorder_recursive(self, node):
+    # Test+ Traversal using recursion (Centered bypass (Inorder))
+    def traversal_inorder_recursive(self, node, array_traversal = None):
         if node != None:
-            self.traversal_inorder_recursive(node.left_)
-            print(f'node = {node.value_}')
-            self.traversal_inorder_recursive(node.right_)
+            self.traversal_inorder_recursive(node.left_, array_traversal)
+            if array_traversal != None:
+                array_traversal.append(node.value_)
+            self.traversal_inorder_recursive(node.right_, array_traversal)
+        
+        return array_traversal
           
-    # Breadth traversal using a queue (Level-order)
-    def traversal_lvl_order_queue(self, node):
+    # Test+ Breadth traversal using a queue (Level-order)
+    def traversal_lvl_order_queue(self, node, array_traversal = None):
+        self.queue_ = Queue()
         self.queue_.put(self)
         
         while not self.queue_.empty():
             node = self.queue_.get()
-            print(node.value_)
+            if array_traversal != None:
+                array_traversal.append(node.value_)
             if node.left_:
                 self.queue_.put(node.left_)
             if node.right_:
                 self.queue_.put(node.right_)
+        return array_traversal
 
     # The function of searching for a node with a given value
     def findNode(self, value):
@@ -103,10 +122,13 @@ class BinaryTree:
     def deleteNode(self, value):
         #Inner function to remove a node with a given value
         def remove(node):
-            if node.parent_.left_ == node:
-                node.parent_.left_ = None
-            elif node.parent_.right_ == node:
-                node.parent_.right_ = None
+            if node.parent_:
+                if node.parent_.left_ == node:
+                    node.parent_.left_ = None
+                elif node.parent_.right_ == node:
+                    node.parent_.right_ = None
+            else:
+                node.value_ = None
 
         #Inner function for search right node with a max value
         def findMinRight(node):
@@ -141,10 +163,12 @@ class BinaryTree:
         node = self.findNode(value)
         #case 1 (not childs)
         if node.right_ == None and node.left_ == None:
+            print('------------------CASE1')
             remove(node)
         
         #case 2 (child left xor child right)
         elif node.right_ == None and node.left_ or node.right_ and node.left_ == None:
+            print('------------------CASE2')
             if node.right_:
                 node.value_ = node.right_.value_
                 node.right_ = None
@@ -154,27 +178,34 @@ class BinaryTree:
         
         #case 3 (child left and child right)
         else:
+            print('------------------CASE3')
             # for main node (find max from left)
             if not node.parent_:
                 findMinRight(node)
+                print('------------------CASE3 A')
 
             # find max from left
             elif node.parent_.left_ == node:
                 findMaxLeft(node)
-
+                print('------------------CASE3 B')
             # find min from right
             elif node.parent_.right_ == node:
                 findMinRight(node)
+                print('------------------CASE3 C')
 
 
 if __name__ == "__main__":
-    b = BinaryTree(10)
-    b.insert(7)
-    b.insert(12)
-    b.insert(6)
-    b.insert(8)
-    b.insert(11)
-    b.insert(13)
-    print(b.traversal_preorder_stack())
-    b.deleteNode(10)
-    print(b.traversal_preorder_stack())
+    b = BinaryTree(25)
+
+
+    b.insert(40)
+    b.insert(42)
+    b.insert(45)
+    b.insert(43)
+    b.insert(48)
+    print(b.traversal_lvl_order_queue(b, []))
+    b.deleteNode(45)
+    print(b.traversal_lvl_order_queue(b, []))
+    b.deleteNode(40)
+    print(b.traversal_lvl_order_queue(b, []))
+
