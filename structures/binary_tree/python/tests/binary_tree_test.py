@@ -8,8 +8,8 @@ BinaryTree = module.BinaryTree
 
 
                 
-# Массив значения для заполенния объектов класса BinaryTree. 
-# Рамерность должна быть равна ARRAY_TREES.
+# An array of values for filling objects of the BinaryTree class. 
+# The dimension must be equal to ARRAY_TREES.
 ARRAY_VALUES = [
     [10, 7, 12, 6, 8, 11, 13], #1
     [10, 7, 12, 6, 8, 11], #2
@@ -23,13 +23,13 @@ ARRAY_VALUES = [
     [10, 7, 12], #10
 ]
 
-# Массив объектов класса BinaryTree. 
-# Рамерность должна быть равна ARRAY_VALUES
+# An array of objects of the BinaryTree class.
+# The dimension must be equal to ARRAY_VALUES.
 ARRAY_TREES = [
     BinaryTree(array[0]) for array in ARRAY_VALUES
 ]
 
-# Обязательная функция для заполнения объектов ARRAY_TREES данными
+# Required function for filling ARRAY_TREES objects with data.
 def initBinaryTrees():
     if len(ARRAY_TREES) == len(ARRAY_VALUES):
         for i in range(len(ARRAY_TREES)):
@@ -113,24 +113,18 @@ OUTPUT_DATA_CASE5 = [
 
 
 class TestBinaryTree(unittest.TestCase):
-
-
     #CASE 1
-    #Тестирование функции прямого обхода с применением стэка
+    #Testing the direct bypass function using stack.
     def test_traversal_preorder_stack(self):
         for i, tree in enumerate(ARRAY_TREES):
             if len(OUTPUT_DATA_CASE1) != len(ARRAY_TREES):
                 break
             real_data = tree.traversal_preorder_stack()
             test_date = OUTPUT_DATA_CASE1[i]
-            if len(real_data) == len(test_date):
-                for j in range(len(real_data)):
-                    self.assertEqual(test_date[j], real_data[j], f'Позиция ошибки в OUTPUT_DATA_CASE1: {i}. Должно быть {test_date[j]}, фактическое значение: {real_data[j]}')
-            else:
-                break
+            self.assertListEqual(real_data, test_date)
 
     #CASE 2
-    #Тестирование функции прямого обхода с применением рекурсии
+    #Testing the direct traversal function using recursion.
     def test_traversal_preorder_recursive(self):
         for i, tree in enumerate(ARRAY_TREES):
             if len(OUTPUT_DATA_CASE2) != len(ARRAY_TREES):
@@ -138,11 +132,9 @@ class TestBinaryTree(unittest.TestCase):
             real_data = [[] for k in range(len(OUTPUT_DATA_CASE2))]
             real_data[i] = tree.traversal_preorder_recursive(tree, real_data[i])
             test_date = OUTPUT_DATA_CASE2[i]
-            if len(real_data[i]) == len(test_date):
-                for j in range(len(real_data[i])):
-                    self.assertEqual(test_date[j], real_data[i][j], f'Позиция ошибки в OUTPUT_DATA_CASE1: {i}. Должно быть {test_date[j]}, фактическое значение: {real_data[j]}')
-            else:
-                break
+            print(real_data[i], test_date)
+            self.assertListEqual(real_data[i], test_date)
+
 
 if __name__ == "__main__":
     unittest.main()
