@@ -1,0 +1,2 @@
+all:
+	g++ main.cpp matrix/matrix.cpp -o main -std=c++11
