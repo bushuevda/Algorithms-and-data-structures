@@ -5,10 +5,6 @@ import (
 	"matrix/matrix"
 )
 
-func TM(arr [][]int32) {
-
-}
-
 func main() {
 	mf := matrix.MatrixFabric[int32]{}
 
