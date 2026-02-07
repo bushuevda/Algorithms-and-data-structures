@@ -1,0 +1,8 @@
+language: cpp
+
+script:
+  - g++ cppunit_test.cc -o cppunit_test
+  - ./cppunit_test
+
+notifications:
+  email: true
