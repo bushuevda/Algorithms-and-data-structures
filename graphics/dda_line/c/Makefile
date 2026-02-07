@@ -1,4 +1,4 @@
-QE = quadratic_education/quadratic_education.c
+QE = dda_line.c
 MAIN = main.c
 GCC = gcc
 SOURCES = $(QE) $(MAIN)
@@ -9,7 +9,7 @@ PROGRAM = $(OUTPUT_DIR)/$(OUTPUT_FILE)
 
 build: $(SOURCES)
 	@rm -rf $(OUTPUT_DIR)
-	@mkdir $(OUTPUT_DIR)
+	@mkdir -p $(OUTPUT_DIR)
 	@$(GCC) $^ -o $(PROGRAM)
 	@$(PROGRAM)
 
