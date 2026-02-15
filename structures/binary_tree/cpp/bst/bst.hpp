@@ -9,7 +9,7 @@ class Bst{
 public:
     T Key;
     std::unique_ptr<K> Data;
-    std::unique_ptr<Bst <T, K>> Parent;
+    Bst <T, K>* Parent;
     std::unique_ptr<Bst <T, K>> Left;
     std::unique_ptr<Bst, <T, K>> Right;
 
