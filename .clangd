@@ -1,0 +1,18 @@
+CompileFlags:
+  Add: 
+    - "--driver-mode=g++"
+    - "-std=c++11"
+    - "-Wall"
+    - "-Wextra"
+  Compiler: C:/msys64/clang64/bin/clang++.exe
+
+Diagnostics:
+  ClangTidy:
+    # Здесь тоже нужен список (массив)
+    Add: [bugprone-*, performance-*, readability-*]
+    Remove: [readability-magic-numbers]
+
+InlayHints:
+  Enabled: Yes
+  ParameterNames: Yes
+  DeducedTypes: Yes

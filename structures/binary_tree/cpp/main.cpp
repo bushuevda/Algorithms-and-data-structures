@@ -1,6 +1,8 @@
 #include <iostream>
-#include "bst/bst.hpp"
 
-int main(){
-    std::cout<<"HELLO";
+
+
+int main() {
+    std::cout<<1;
+    return  0;
 }
